@@ -19,7 +19,7 @@ module SadPanda
     # Converts all the words to its stem form
     def stems_for(words)
       stemmer = Lingua::Stemmer.new(language: 'en')
-      words.map! { |word| stemmer.stem(word) }
+      words.map { |word| stemmer.stem(word) }
     end
 
     # Strips the words array of stop words

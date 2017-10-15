@@ -8,7 +8,11 @@ module SadPanda
     attr_reader :words, :scores
 
     def initialize(text)
-      @words = words_in(text)
+      word_frequency = SadPanda::WordFrequency.new(text)
+
+      @frequencies = word_frequency.call
+      @words = word_frequency.words
+      
       @scores = { anger: 0, disgust: 0, joy: 0,
                   surprise: 0, fear: 0, sadness: 0,
                   ambiguous: 0 }
@@ -16,8 +20,8 @@ module SadPanda
 
     # Main method that initiates scoring emotions
     def call
-      words = stems_for(remove_stopwords_in(@words))
-      score_words(frequencies_for(words))
+      # words = stems_for(remove_stopwords_in(@words))
+      score_words(@frequencies)
 
       scores.key(scores.values.max)
     end

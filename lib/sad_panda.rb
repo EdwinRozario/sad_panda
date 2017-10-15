@@ -4,6 +4,7 @@ require 'sad_panda/bank/stopwords'
 require 'sad_panda/emotion'
 require 'sad_panda/polarity'
 require 'sad_panda/helpers'
+require 'sad_panda/word_frequency'
 require 'lingua/stemmer'
 
 # SadPanda main module
